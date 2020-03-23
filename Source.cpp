@@ -8,9 +8,14 @@
 
 using namespace std;
 
+string GetUserName();
 
 int main()
 {
+	string userName;
+	userName = GetUserName();
+	
+
 	const int WRONG_MAX = 5;
 	vector<string> words;
 	words.push_back("STRING");
@@ -25,20 +30,31 @@ int main()
 	words.push_back("CONST");
 	srand(static_cast<unsigned int>(time(0)));
 	random_shuffle(words.begin(), words.end());
+	
+
+	for (int i = 0; i < 3; i++)
+
+	{
+
+		cout << "\nWelcome to round " << i + 1 << " of 3.\n\n";
+
+	}
+
+
 
 	const string WORD_TO_GUESS = words[0];
 	string soFar(WORD_TO_GUESS.size(), '-');
 	string usedLetters = "";
 	int wrong = 0;
-	cout << "Welcome to hangman!\n\n";
+	cout << "\nWelcome to hangman!\n\n";
 	while ((wrong < WRONG_MAX) && (soFar != WORD_TO_GUESS))
 	{
-		cout << "\n\nYou have " << (WRONG_MAX - wrong) << " guesses.\n";
+		cout << userName << " has " << (WRONG_MAX - wrong) << " guesses.\n";
 		cout << "\nYou've used this letters: " << usedLetters << endl;
 		cout << "\nSo far, the word looks like this:\n" << soFar << endl;
 
 		char guess;
-		cout << "\n\nEnter your guess: ";
+		cout << userName << " enter your guess: ";
 		cin >> guess;
 		guess = toupper(guess);
 
@@ -60,11 +76,7 @@ int main()
 				{
 					soFar[i] = guess;
 				}
-				else
-				{
-					cout << "Sorry,mate " << guess << " is not in the word.\n";
-					++wrong;
-				}
+				
 			}
 			if (wrong == WRONG_MAX)
 			{
@@ -82,5 +94,26 @@ int main()
 		system("PAUSE");
 		return EXIT_SUCCESS;
 	
+
+}
+string GetUserName()
+
+{
+
+	//create string to hold user name
+
+	string userName;
+
+	//user input of user name
+
+	cout << "\n\n Enter player name: ";
+
+	//get user name from system
+
+	getline(cin, userName);
+
+	//return name
+
+	return userName;
 
 }
