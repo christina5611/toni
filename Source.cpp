@@ -12,6 +12,7 @@ string GetUserName();
 
 int main()
 {
+	cout << "\nWelcome to hangman!\n\n";
 	string userName;
 	userName = GetUserName();
 	
@@ -46,7 +47,7 @@ int main()
 	string soFar(WORD_TO_GUESS.size(), '-');
 	string usedLetters = "";
 	int wrong = 0;
-	cout << "\nWelcome to hangman!\n\n";
+	
 	while ((wrong < WRONG_MAX) && (soFar != WORD_TO_GUESS))
 	{
 		cout << userName << " has " << (WRONG_MAX - wrong) << " guesses.\n";
